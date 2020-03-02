@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('tarea','TareaController'); //Generan los 6 métodos que apuntan al generador
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('prueba/{nombre?}',function($nombre = 'desconocido'){
+    $nombre = strtoupper($nombre);
+    return view('vista-prueba')->with(['nombre' => $nombre]); //se lo pasa a la vista
+});
+
